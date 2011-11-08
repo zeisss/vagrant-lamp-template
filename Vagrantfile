@@ -1,6 +1,6 @@
 Vagrant::Config.run do |config|
   config.vm.box = "lucid32"
-  # config.vm.boot_mode = :gui
+  config.vm.boot_mode = :gui
   # config.vm.network "33.33.33.10"
 
   # Forward a port from the guest to the host, which allows for outside
@@ -26,6 +26,10 @@ Vagrant::Config.run do |config|
      chef.add_recipe "apache2"
      chef.add_recipe "mysql::client"
      chef.add_recipe "mysql::server"
+     chef.add_recipe "php"
+     chef.add_recipe "php::module_mysql"
+     chef.add_recipe "php::module_curl" 
+     chef.add_recipe "apache2::mod_php5"
        
      # You may also specify custom JSON attributes:
      chef.json = { 
